@@ -1,6 +1,6 @@
 # ciallo-href
 Ciallo样式的中转页面
-# 用法
+# 用法（过时）
 https://ha47i.github.io/ciallo-href/ciallo.html?goref=目标地址
 # 开启调试
 地址栏结尾加上「&debug」即可
