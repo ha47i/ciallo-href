@@ -1,0 +1,62 @@
+<!-- 纯原创！禁止盗用！--><html lang="zh-cn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Ciallo～(∠・ω&lt;)⌒☆</title><!--<link rel="stylesheet" href="bug.css">--><style>.bodyy{padding:2.8rem 1.6rem;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";font-size:1.8rem;line-height:1.5;background-color:#fff;max-width:600px;margin:0 auto}@media (prefers-color-scheme:dark){.bodyy{background-color:#000}}@media (prefers-color-scheme:light){.bodyy{background-color:#fff}}.divt{display:flex;flex-direction:column;justify-content:center;align-items:center;width:100%;height:100%}.title{user-select:none;cursor:pointer;text-decoration:none;font-weight:bold;text-align:center;background:-webkit-linear-gradient(left,#F596AA,#66CCFF 25%,#F596AA 50%,#66CCFF 75%,#F596AA);-webkit-background-clip:text;-webkit-text-fill-color:transparent;-webkit-background-size:200% 100%;-webkit-animation:runs 3s infinite linear}@-webkit-keyframes runs{0%{background-position:0 0}100%{background-position:100% 0}}</style><style>.debugoff{display:none}.debugon{font-size:1rem;text-align:left;word-wrap:break-word;overflow-wrap:break-word}</style></head><body class="bodyy"><a id="gorefValue" class="debugoff"></a><div class="divt"><a class="title" id="redirectButton">Ciallo～(∠・ω&lt;)⌒★</a></div></div><script>
+// 获取地址栏中的参数值
+function getUrlParameter(name) {
+  name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+  var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+  var results = regex.exec(location.search);
+  return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+}
+
+// 解码base64内容
+function decodeBase64(content) {
+  try {
+    return atob(content);
+  } catch (e) {
+    console.error('解码失败:', e);
+    return '';
+  }
+}
+
+// 在页面加载时获取 goref 参数的值并显示
+document.addEventListener('DOMContentLoaded', function() {
+  var goref = getUrlParameter('goref');
+  if (goref === '') {
+    goref = './nogoref.html';
+  } else {
+    // 解码base64内容
+    goref = decodeBase64(goref);
+    // 如果解码失败，则使用默认值
+    if (goref === '') {
+      goref = './nobase64.html';
+    }
+  }
+  document.getElementById('gorefValue').innerText = "删除地址栏的「&debug」即可退出调试模式。目前goref为 " + goref;
+});
+
+// 点击按钮时根据 goref 参数的值进行跳转
+document.getElementById('redirectButton').addEventListener('click', function() {
+  var goref = getUrlParameter('goref');
+  if (goref === '') {
+    goref = './nogoref.html';
+  } else {
+    // 解码base64内容
+    goref = decodeBase64(goref);
+    // 如果解码失败，则使用默认值
+    if (goref === '') {
+      goref = './nobase64.html';
+    }
+  }
+  window.location.href = goref;
+});
+</script><script>
+// 获取当前页面地址
+var currentURL = window.location.href;
+
+// 检测地址中是否包含 debug=yes
+if (currentURL.indexOf('&debug') !== -1) {
+    document.getElementById("gorefValue").className = "debugon";
+} else {
+    // 否则什么都不做
+    // 可以在这里添加其他操作，或者留空
+}
+</script></body></html>
